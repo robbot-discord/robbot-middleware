@@ -1,0 +1,43 @@
+{
+  "author": "Robert Smieja",
+  "description": "Log level filter middleware for RobBot",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=12",
+    "npm": ">=6"
+  },
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "template",
+    "babel"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "name": "@robbot/logging-filter",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "npm-run-all --parallel build:js lint",
+    "build:js": "tsc",
+    "clean": "rimraf dist/",
+    "lint": "eslint ./src/**/*",
+    "lint:staged": "lint-staged",
+    "lint:fix": "eslint --fix ./src/**/*",
+    "prettier": "prettier --write '*.{js,ts,jsx,tsx,json,md}'",
+    "prepublishOnly": "npm-run-all --parallel test lint",
+    "prestart": "npm run-script lint",
+    "start": "ts-node src/index.ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "version": "npm run lint:fix && git add -A src"
+  },
+  "version": "0.0.0",
+  "dependencies": {
+    "@robbot/robbot-core": "0.0.8"
+  }
+}

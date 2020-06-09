@@ -1,3 +1,6 @@
+# Depdencies
+node_modules
+
 # Transpiled output
 dist/
 lib/
