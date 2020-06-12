@@ -38,6 +38,6 @@
   },
   "version": "0.0.0",
   "dependencies": {
-    "@robbot/robbot-core": "0.0.8"
+    "@robbot/robbot-core": "0.0.9"
   }
 }
