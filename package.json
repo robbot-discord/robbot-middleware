@@ -2,7 +2,7 @@
   "author": "Robert Smieja",
   "description": "Mono-repo for ",
   "devDependencies": {
-    "@babel/core": "^7.10.3",
+    "@babel/core": "^7.10.4",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-typescript": "^7.10.1",
     "@types/jest": "^26.0.3",
