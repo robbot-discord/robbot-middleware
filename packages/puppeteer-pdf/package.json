@@ -38,6 +38,10 @@
   },
   "version": "0.0.0",
   "dependencies": {
-    "@robbot/robbot-core": "0.0.9"
+    "@robbot/robbot-core": "0.0.10",
+    "puppeteer": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/puppeteer": "^3.0.1"
   }
 }
