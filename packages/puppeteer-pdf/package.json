@@ -32,8 +32,8 @@
     "prepublishOnly": "npm-run-all --parallel test lint",
     "prestart": "npm run-script lint",
     "start": "ts-node src/index.ts",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch --passWithNoTests",
     "version": "npm run lint:fix && git add -A src"
   },
   "version": "0.0.2",
