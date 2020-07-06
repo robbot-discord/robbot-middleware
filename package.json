@@ -61,8 +61,7 @@
     "lint:fix": "lerna run lint:fix",
     "prettier": "lerna run prettier",
     "test": "lerna run test",
-    "test:watch": "lerna run test:watch",
-    "version": "lerna version"
+    "test:watch": "lerna run test:watch"
   },
   "version": "0.0.0"
 }
