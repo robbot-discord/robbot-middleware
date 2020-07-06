@@ -1,6 +1,6 @@
 {
   "author": "Robert Smieja",
-  "description": "Mono-repo for ",
+  "description": "Mono-repo for RobBot Middleware",
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
@@ -9,7 +9,7 @@
     "@types/node": "^14.0.14",
     "@typescript-eslint/eslint-plugin": "^3.5.0",
     "@typescript-eslint/parser": "^3.5.0",
-    "eslint": "^7.3.1",
+    "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.5",
