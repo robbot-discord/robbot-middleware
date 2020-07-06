@@ -35,8 +35,8 @@
     "test:watch": "jest --watch",
     "version": "npm run lint:fix && git add -A src"
   },
-  "version": "0.0.1",
+  "version": "0.0.0",
   "dependencies": {
-    "@robbot/robbot-core": "0.0.9"
+    "@robbot/robbot-core": "0.0.10"
   }
 }
