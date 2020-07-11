@@ -1,27 +1,27 @@
 import { PerServerEventHandlers } from "./types"
 import { EventHandlers } from "@robbot/robbot-core/dist/handlers"
-import R from "ramda"
 import { produce } from "immer"
+import { EventHandlerMiddleware } from "@robbot/robbot-core/dist/middleware/types"
 
 export const createServerFilterMiddleware = (
   configuration: PerServerEventHandlers
-): EventHandlers => {
-  const defaultEventHandlers = R.clone(configuration.defaultEventHandlers)
+): EventHandlerMiddleware => {
+  return (eventHandlers: EventHandlers) => {
+    return produce(eventHandlers, (draft) => {
+      draft.message = (message) => {
+        if (message.guild) {
+          const guildSnowflake = message.guild.id
+          const guildMessageHandler = configuration[guildSnowflake]?.message
 
-  return produce(defaultEventHandlers, (draft) => {
-    draft.message = (message) => {
-      if (message.guild) {
-        const guildSnowflake = message.guild.id
-        const messageHandler = configuration[guildSnowflake]?.message
-
-        if (messageHandler) {
-          messageHandler(message)
-        } else {
-          defaultEventHandlers.message(message)
+          if (guildMessageHandler) {
+            guildMessageHandler(message)
+          } else {
+            eventHandlers.message(message)
+          }
         }
       }
-    }
-  })
+    })
+  }
 }
 
 export * from "./types"
