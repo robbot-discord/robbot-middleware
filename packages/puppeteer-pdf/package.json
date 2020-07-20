@@ -39,7 +39,7 @@
   "version": "0.0.3",
   "dependencies": {
     "@robbot/robbot-core": "0.0.10",
-    "puppeteer": "^5.1.0"
+    "puppeteer": "^5.2.0"
   },
   "devDependencies": {
     "@types/puppeteer": "^3.0.1",
