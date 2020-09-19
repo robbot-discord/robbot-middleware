@@ -33,7 +33,7 @@
     "start": "ts-node src/index.ts",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch --passWithNoTests",
-    "version": "npm run lint:fix && git add -A src"
+    "version": "pnpm run lint:fix && git add -A src"
   },
   "version": "0.0.3",
   "dependencies": {

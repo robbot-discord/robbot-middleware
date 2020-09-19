@@ -30,11 +30,10 @@
     "lint:fix": "eslint --fix ./src/**/*",
     "prettier": "prettier --write '*.{js,ts,jsx,tsx,json,md}'",
     "prepublishOnly": "npm-run-all --parallel test lint",
-    "prestart": "npm run-script lint",
     "start": "ts-node src/index.ts",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch --passWithNoTests",
-    "version": "npm run lint:fix && git add -A src"
+    "version": "pnpm run lint:fix && git add -A src"
   },
   "version": "0.0.3",
   "dependencies": {
