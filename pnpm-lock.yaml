@@ -71,7 +71,6 @@ importers:
   packages/puppeteer-pdf:
     dependencies:
       '@robbot/robbot-core': 0.0.12
-      axios: 0.20.0
       puppeteer: 5.3.1
     devDependencies:
       '@types/puppeteer': 3.0.2
@@ -79,7 +78,6 @@ importers:
     specifiers:
       '@robbot/robbot-core': 0.0.12
       '@types/puppeteer': ^3.0.2
-      axios: ^0.20.0
       npm-run-all: ^4.1.5
       puppeteer: ^5.3.1
 lockfileVersion: 5.1
@@ -1816,12 +1814,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-zg7Hz2k5lI8kb7U32998pRRFin7zJlkfezGJjUc2heaD4Pw2wObakCDVzkKztTm/Ln7eiVvYsjqak0Ed4LkMDA==
-  /axios/0.20.0:
-    dependencies:
-      follow-redirects: 1.13.0
-    dev: false
-    resolution:
-      integrity: sha512-ANA4rr2BDcmmAQLOKft2fufrtuvlqR+cXNNinUmvfeSNCOF98PZL+7M/v1zIdGo7OLjEA9J2gXJL+j4zGsl0bA==
   /babel-jest/26.3.0_@babel+core@7.11.6:
     dependencies:
       '@babel/core': 7.11.6
@@ -3003,12 +2995,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-r5wGx7YeOwNWNlCA0wQ86zKyDLMQr+/RB8xy74M4hTphfmjlijTSSXGuH8rnvKZnfT9i+75zmd8jcKdMR4O6jA==
-  /follow-redirects/1.13.0:
-    dev: false
-    engines:
-      node: '>=4.0'
-    resolution:
-      integrity: sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
   /for-in/1.0.2:
     dev: true
     engines:

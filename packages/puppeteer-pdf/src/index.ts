@@ -1,10 +1,13 @@
-import axios from "axios"
-import { TextChannel } from "discord.js"
-import puppeteer from "puppeteer"
-import { Message } from "discord.js"
-import { Logger, EventHandlerMiddleware } from "@robbot/robbot-core/dist"
-import { EventHandlers } from "@robbot/robbot-core/dist/handlers"
-import { Stream } from "stream"
+import {
+  EventHandlerMiddleware,
+  Logger,
+  RobBotClient,
+} from "@robbot/robbot-core/dist"
+import { EventHandlersCreator } from "@robbot/robbot-core/dist/handlers"
+import { DMChannel, Message, MessageAttachment, TextChannel } from "discord.js"
+import { defaultConfig } from "./config"
+import { createPDFsFromLinks } from "./puppeteer"
+import { PuppeteerMiddlewareConfiguration } from "./types"
 
 export const getLinksInString = (str: string): URL[] => {
   const linkRegex = /(https?:\/\/[\S]+)/gi
@@ -27,72 +30,38 @@ export const getLinksInString = (str: string): URL[] => {
 
 export const createPuppeteerPdfMiddleware = (
   logger: Logger,
-  puppeteerCreator?: () => Promise<puppeteer.Browser>
+  config: PuppeteerMiddlewareConfiguration = defaultConfig
 ): EventHandlerMiddleware => {
-  return (eventHandlers: EventHandlers) => {
-    return {
-      ...eventHandlers,
-      message: async (message: Message) => {
-        const messageChannel = message.channel
-        const linkUrls = getLinksInString(message.content)
-        const browser = await (puppeteerCreator
-          ? puppeteerCreator()
-          : puppeteer.launch({
-              executablePath: "/usr/bin/chromium-browser",
-            }))
+  const returnValue = (eventHandlerCreator: EventHandlersCreator) => {
+    return (client: RobBotClient) => {
+      const otherHandlers = eventHandlerCreator(client)
 
-        if (
-          linkUrls.length === 0 ||
-          messageChannel === undefined ||
-          !(messageChannel instanceof TextChannel)
-        ) {
-          return
-        }
+      return {
+        ...otherHandlers,
+        message: async (message: Message) => {
+          const messageChannel = message.channel
 
-        const messageTextChannel = messageChannel
+          if (
+            messageChannel instanceof TextChannel ||
+            messageChannel instanceof DMChannel
+          ) {
+            const linkUrls = getLinksInString(message.content)
 
-        try {
-          for (const url of linkUrls) {
-            const response = await axios.get<Stream>(url.href, {
-              responseType: "stream",
-            })
+            const linksToPdfMap = await createPDFsFromLinks(linkUrls, config)
 
-            if (response.status === 200) {
-              const pathEnding = url.pathname.split("/").slice(-1)[0]
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-              const contentType = response.headers["content-type"] as string
-              if (
-                contentType.includes("text/html") &&
-                (url.origin.includes("4cdn") || url.origin.includes("4chan"))
-              ) {
-                const page = await browser.newPage()
-                try {
-                  await page.goto(url.href, {
-                    waitUntil: "networkidle2",
-                  })
-                  await page.emulateMediaType("screen")
-                  const pdfBuffer = await page.pdf({ format: "Letter" })
-
-                  await messageTextChannel.send(undefined, {
-                    embed: undefined,
-                    files: [
-                      { attachment: pdfBuffer, name: `${pathEnding}.pdf` },
-                    ],
-                  })
-                } finally {
-                  page.close()
-                }
-              }
+            for (const [link, pdfBuffer] of linksToPdfMap) {
+              const attachment = new MessageAttachment(pdfBuffer)
+              messageChannel.send(`PDF capture of ${link}`, attachment)
             }
           }
-        } finally {
-          await browser.close()
-        }
 
-        return eventHandlers.message(message)
-      },
+          // call other handlers
+          otherHandlers.message(message)
+        },
+      }
     }
   }
+  return returnValue
 }
 
 export * from "./types"
