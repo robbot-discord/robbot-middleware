@@ -55,6 +55,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "build": "pnpm build -r"
+    "build": "pnpm build -r",
+    "publish": "pnpm publish -r"
   }
 }

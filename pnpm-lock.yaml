@@ -53,7 +53,7 @@ importers:
       '@robbot/robbot-core': 0.0.12
       immer: 7.0.9
     devDependencies:
-      '@types/ramda': 0.27.18
+      '@types/ramda': 0.27.19
       eslint: 7.9.0
       jest: 26.4.2
       npm-run-all: 4.1.5
@@ -62,7 +62,7 @@ importers:
       typescript: 4.0.3
     specifiers:
       '@robbot/robbot-core': 0.0.12
-      '@types/ramda': ^0.27.18
+      '@types/ramda': ^0.27.19
       eslint: ^7.9.0
       immer: ^7.0.9
       jest: ^26.4.2
@@ -1658,12 +1658,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-AHVwr1YdFdxeabfC1g34ZuJ61dKOcfdXlG+sqGUweD+5VrD6A9emwmc2OZY+N8CdEKdwl29hwvtTMSJ6ZVVsiQ==
-  /@types/ramda/0.27.18:
+  /@types/ramda/0.27.19:
     dependencies:
       ts-toolbelt: 6.15.5
     dev: true
     resolution:
-      integrity: sha512-cHyQn79ePFP1UMLyCg6hnGMcwrVJrkMnxkPTqxHmkwiv32uexijx1pAvbztDIGCttK6VPcm14PXULL+p9k+o9g==
+      integrity: sha512-BAeH07a6pRfFyoTuwhWJeNNHucbMlwh+imkO2BKOTZ6wpAElOAPyhBdyP1hx4W4sCPDnV/5UetcjZ/RT5lcMTA==
   /@types/semver/6.2.2:
     dev: true
     resolution:
