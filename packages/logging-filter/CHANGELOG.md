@@ -1,5 +1,11 @@
 # @robbot/logging-filter
 
+## 0.0.7
+
+### Patch Changes
+
+- 4cb83f6: Update logging-filter to use new API
+
 ## 0.0.6
 
 ### Patch Changes

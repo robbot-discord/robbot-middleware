@@ -33,7 +33,7 @@
     "test:watch": "jest --watch --passWithNoTests",
     "version": "pnpm run lint:fix && git add -A src"
   },
-  "version": "0.0.6",
+  "version": "0.0.7",
   "dependencies": {
     "@robbot/robbot-core": "0.0.13"
   },
